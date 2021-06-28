@@ -23,5 +23,8 @@
   "homepage": "https://github.com/MariusCodeAcademy/js3_jest_unit_test#readme",
   "devDependencies": {
     "jest": "^27.0.5"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }

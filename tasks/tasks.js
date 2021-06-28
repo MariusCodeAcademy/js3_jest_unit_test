@@ -70,7 +70,7 @@ const people = [
 ];
 
 function allPeople() {
-  return people
+  return [...people]
 }
 
 // console.log(people);
@@ -78,18 +78,15 @@ function allPeople() {
 // 1. Naudojant Array.prototype.forEach atspausdinti visus vyrus.
 const printMalesOnly = function (person) {
   // jei lytis === male tai vyras, kiti atvejai moteris
-  if (person.sex === "male") console.log(person);
+  if (person.sex === "male") return person;
   //   person.sex === "male" ? console.log(person) : null;
 };
-console.log("1. Naudojant Array.prototype.forEach atspausdinti visus vyrus.");
 
 // panaudoti printMalesOnly su foreach ant people masyvo
 // masyvo pavadinimas . forEach( funkcija 'callback' )
-people.forEach(printMalesOnly);
-console.log(
-  "==================================================================="
-);
-console.log("");
+const malesOnly = people.map(printMalesOnly).filter(p => p);
+console.log(' malesOnly', malesOnly);
+
 
 // 2. Naudojant Array.prototype.forEach atspausdinti visas moteris jaunesnes nei 35 metai.
 const printYoungFemales = function (person) {
@@ -103,7 +100,7 @@ people.forEach(printYoungFemales);
 // 3. Naudojant Array.prototype.forEach atspausdinti visus žmones kurie turi mašinas.
 
 // 4. Naudojant Array.prototype.forEach atspausdinti visus susituokusius žmones.
-console.clear();
+
 console.log(
   "4. Naudojant Array.prototype.forEach atspausdinti visus susituokusius žmones."
 );
@@ -116,7 +113,7 @@ people.forEach(function (person) {
 function printSexIfHasCar(person) {
   if (person.hasCar) console.log(person.sex);
 }
-console.clear();
+
 console.log(
   "5. Naudojant Array.prototype.forEach atspausdinti visų vairuojančių žmonių lytį."
 );
@@ -138,13 +135,8 @@ const countDrivers = function (person) {
 };
 people.forEach(countDrivers);
 
-console.log("drivingMaleCount", drivingMaleCount);
-console.log("drivingFemaleCount", drivingFemaleCount);
-// for primitive values galim taip isloginti.
-console.log({ drivingMaleCount, drivingFemaleCount });
-
 // 7. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyva su objektais, kurie turės savybes sex ir income
-console.clear();
+
 console.log(
   "7. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyva su objektais, kurie turės savybes sex ir income"
 );
@@ -159,7 +151,7 @@ function lytisIrPajamos(person) {
 
 const sexAndIncome = people.map(lytisIrPajamos);
 
-console.log("sexAndIncome", sexAndIncome);
+
 
 // 8. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyva pakeičiant savybę 'income' į 'salary'
 // spread operator.
@@ -182,13 +174,13 @@ const renameIncome = function (person) {
   delete localPersonCopy.income;
   return localPersonCopy;
 };
-console.clear();
+
 console.log(
   "8. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyva pakeičiant savybę"
 );
 
-console.log(people.map(renameIncome));
-console.log(people);
+
+
 
 // 9. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyva kuriame nebūtų lyties, vardo ir pavardės
 function noSexNameSurname(person) {
@@ -201,14 +193,12 @@ function noSexNameSurname(person) {
   // grazinam nutrinta objekta
   return localPerson;
 }
-console.clear();
+
 console.log(
   "9. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyva kuriame nebūtų lyties, vardo ir pavardė"
 );
 
 let nutrintas = people.map(noSexNameSurname);
-console.table(nutrintas);
-console.table(people);
 
 // 10. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyvą kur 
 // savybės name ir surname būtų pakeistos viena savybe - fullname
@@ -224,14 +214,11 @@ let nameSurnameArr = people.map((person) => {
 });
 console.log("10 uzd ===========");
 
-console.table(nameSurnameArr);
+// console.table(nameSurnameArr);
 
 // 11. extra parasyti funkcija kuri is isrikiuoja masyva pagal amziu
 // https://www.w3schools.com/jsref/jsref_sort.asp
 
-console.clear();
-
-console.log(people);
 
 // tinka skaitinem reiksmem
 people.sort((a, b) => b.age - a.age);
@@ -240,12 +227,8 @@ people.sort((a, b) => b.age - a.age);
 people.sort((a, b) => {
   //   if (a.surname < b.surname) return 1;
   //   return -1;
-
   return a.surname < b.surname ? 1 : -1;
 });
-
-console.log("after sort", people);
-console.table(people, ["age", "name", "income"]);
 
 
 function returnDrivers(arr) {
@@ -261,8 +244,6 @@ function returnDrivers(arr) {
   })
   return result;
 }
-
-
 
 
 module.exports = {

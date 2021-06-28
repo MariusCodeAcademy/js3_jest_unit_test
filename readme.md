@@ -2,4 +2,4 @@
 
 1. npm i -D jest
 
-2.
+2. jest --coverage // lentele su summary

@@ -9,7 +9,19 @@ function divide(n1, n2) {
     return n1 / n2;
 }
 
+function showValue(val) {
+    return val;
+}
+
+function notMoreThan(val) {
+    const goods1 = 200;
+    const goods2 = 150;
+    return goods1 + goods2 < val ? true : false
+}
+
 module.exports = {
     add,
-    divide
+    divide,
+    showValue,
+    notMoreThan
 }

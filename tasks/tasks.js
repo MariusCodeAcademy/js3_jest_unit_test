@@ -90,7 +90,7 @@ console.log(' malesOnly', malesOnly);
 
 // 2. Naudojant Array.prototype.forEach atspausdinti visas moteris jaunesnes nei 35 metai.
 const printYoungFemales = function (person) {
-  if (person.sex === "female" && person.age < 35) console.log(person);
+  if (person.sex === "female" && person.age < 35) return person;
 };
 console.log(
   "2. Naudojant Array.prototype.forEach atspausdinti visas moteris jaunesnes nei 35 metai."
@@ -249,6 +249,6 @@ function returnDrivers(arr) {
 module.exports = {
   returnDrivers,
   allPeople,
-  noSexNameSurname
-
+  noSexNameSurname,
+  printYoungFemales
 }

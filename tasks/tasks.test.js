@@ -1,5 +1,5 @@
 const { typeOf } = require('react-is');
-const { returnDrivers, allPeople, noSexNameSurname } = require('./tasks');
+const { returnDrivers, allPeople, noSexNameSurname, printYoungFemales } = require('./tasks');
 
 const people = allPeople()
 
@@ -41,6 +41,15 @@ it('noSexNameSurname ', () => {
         hasCar: false,
         devices: ["laptop", "tablet", "phone", "drone"],
       })
+});
+
+it('should return young females', () => {
+    const obj = {sex: 'female', age: 25};
+    const obj1 = {sex: 'male', age: 25};
+    const obj2 = {sex: 'female', age: 45};
+    expect(printYoungFemales(obj)).toEqual({sex: 'female', age: 25})
+    expect(printYoungFemales(obj1)).toBeUndefined()
+    expect(printYoungFemales(obj2)).toBeUndefined()
 });
 
 
